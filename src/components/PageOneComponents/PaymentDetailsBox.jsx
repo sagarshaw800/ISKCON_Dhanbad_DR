@@ -52,7 +52,7 @@ const PaymentDetailsBox = ({
   const renderField = (label, value) => (
     <View style={styles.container}>
       <View style={styles.inputBox}>
-        <Text style={styles.inputText}>{value || "Not Provided"}</Text>
+        <Text style={styles.inputText}>{value || ""}</Text>
       </View>
       <View style={styles.labelContainer}>
         <Text style={styles.labelText}>{label}</Text>

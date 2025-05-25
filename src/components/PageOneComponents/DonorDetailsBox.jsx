@@ -57,7 +57,7 @@ const DonorDetailsBox = ({
     <View style={styles.fieldWrapper}>
       <Text>
         <Text style={styles.fieldLabel}>{label}: </Text>
-        <Text style={styles.fieldValue}>{value || "Not Provided"}</Text>
+        <Text style={styles.fieldValue}>{value || ""}</Text>
       </Text>
     </View>
   );
@@ -67,6 +67,7 @@ const DonorDetailsBox = ({
       <View style={styles.inputBox}>
         {renderField("Name", name)}
         {renderField("Address", address)}
+        <View style={{ height: address?.trim() ? 8 : 35 }} />
         {renderField("PIN", pincode)}
         {renderField("PAN", pan)}
         {renderField("Mobile", mobile)}

@@ -22,13 +22,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#000",
     padding: "0 20px",
+    fontWeight: "bold"
   },
   donorCopyBox: {
     backgroundColor: "#ff87ab",
     paddingVertical: 2,
     paddingHorizontal: 6,
     marginBottom: 4,
-    marginRight: 4, 
+    marginRight: 4,
     textAlign: "center",
   },
   donorCopyText: {
@@ -52,28 +53,31 @@ const styles = StyleSheet.create({
   },
 });
 
-const DonationReceiptHeader = ({receiptNumber, receiptDate}) => (
-  <View style={styles.container}>
-    <View
-      style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
-    >
-      <View>
-        <Text style={[styles.receiptNoTag, { fontSize: 18 }]}>Donation</Text>
-        <Text style={styles.receiptNoTag}>Receipt No.</Text>
+const DonationReceiptHeader = ({ receiptNumber, receiptDate }) => {
+  
+  return (
+    <View style={styles.container}>
+      <View
+        style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+      >
+        <View>
+          <Text style={[styles.receiptNoTag, { fontSize: 18 }]}>Donation</Text>
+          <Text style={styles.receiptNoTag}>Receipt No.</Text>
+        </View>
+        <Text style={styles.receiptNo}>{receiptNumber}</Text>
       </View>
-      <Text style={styles.receiptNo}>{receiptNumber}</Text>
-    </View>
 
-    <View
-      style={{ display: "flex", flexDirection: "row", alignItems: "center"}}
-    >
-      <View style={styles.donorCopyBox}>
-        <Text style={styles.donorCopyText}>DONOR'S</Text>
-        <Text style={styles.donorCopyText}>COPY</Text>
+      <View
+        style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+      >
+        <View style={styles.donorCopyBox}>
+          <Text style={styles.donorCopyText}>DONOR'S</Text>
+          <Text style={styles.donorCopyText}>COPY</Text>
+        </View>
+        <DateInput width="250px" value={receiptDate} />
       </View>
-      <DateInput width="250px" value={receiptDate} />
     </View>
-  </View>
-);
+  );
+};
 
 export default DonationReceiptHeader;

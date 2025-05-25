@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image } from "@react-pdf/renderer";
-import RUPEE_Base64 from "../../assets/RUPEE"
+import RUPEE_Base64 from "../../assets/RUPEE";
 
 const DonationAmountInput = ({
   width = "100%",
@@ -8,6 +8,10 @@ const DonationAmountInput = ({
   amountWords = "",
   amountNumber = "",
 }) => {
+  const Currencyformatter = new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+  });
   const styles = StyleSheet.create({
     container: {
       width,
@@ -53,7 +57,7 @@ const DonationAmountInput = ({
       flexDirection: "row",
       alignItems: "center",
       gap: 4,
-      marginRight: 50
+      marginRight: 50,
     },
     rupeeBox: {
       backgroundColor: "#ff36ab",
@@ -64,10 +68,11 @@ const DonationAmountInput = ({
       width: 30,
       display: "flex",
       justifyContent: "center",
-      alignItems: "center"
+      alignItems: "center",
     },
     amountNumberText: {
       fontSize: 18,
+      marginLeft: 20,
       fontWeight: "bold",
       color: "#000",
     },
@@ -78,11 +83,22 @@ const DonationAmountInput = ({
       <View style={styles.inputBox}>
         <View style={styles.row}>
           <Text style={styles.amountWordsText}>{amountWords}</Text>
-          <View style={styles.amountNumberContainer}>
+          <View
+            style={[
+              styles.amountNumberContainer,
+              amountNumber === "" && { marginRight: 150 },
+            ]}
+          >
             <View style={styles.rupeeBox}>
               <Image src={RUPEE_Base64} style={{ width: 24, height: 24 }} />
             </View>
-            <Text style={styles.amountNumberText}>{amountNumber}</Text>
+            <Text style={styles.amountNumberText}>
+              {amountNumber.trim() !== ""
+                ? Currencyformatter.format(amountNumber)
+                    .replace(/^[^\d]+/, "")
+                    .replace(/\.\d{2}$/, "")
+                : ""}
+            </Text>
           </View>
         </View>
       </View>
