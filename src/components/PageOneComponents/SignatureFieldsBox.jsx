@@ -36,6 +36,8 @@ const SignatureFieldsBox = ({
       fontSize: 10,
       color: "#023e7d",
       borderRadius: 4,
+      // left: "50%",
+      transform: "translateX(+100%)",
     },
   });
 
@@ -48,7 +50,7 @@ const SignatureFieldsBox = ({
 
   return (
     <View style={styles.rowContainer}>
-      {renderSignatureField("Donor Signature for Cash Payment", donorSignature)}
+      {/* {renderSignatureField("Donor Signature for Cash Payment", donorSignature)} */}
       {renderSignatureField("Signature of ISKCON Representative", iskconSignature)}
     </View>
   );
